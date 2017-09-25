@@ -39,6 +39,19 @@
       "git add"
     ]
   },
+  "dependencies": {
+    "hoist-non-react-statics": "^2.3.1",
+    "immutable": "^3.8.1",
+    "invariant": "^2.2.2",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.15.6"
+  },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.2.0",
     "babel-preset-react-app": "^3.0.2",
@@ -52,6 +65,7 @@
     "jest": "^21.1.0",
     "jest-serializer-enzyme": "^1.0.0",
     "lint-staged": "^4.2.3",
-    "prettier": "^1.7.0"
+    "prettier": "^1.7.0",
+    "react-test-renderer": "^15.6.1"
   }
 }

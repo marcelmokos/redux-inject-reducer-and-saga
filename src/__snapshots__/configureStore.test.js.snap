@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`configureStore component A, with reducer and saga 1`] = `
+Immutable.Map {
+  "config": "configState",
+  "other": Immutable.Map {},
+}
+`;
+
+exports[`configureStore component A, with reducer and saga 2`] = `null`;
+
+exports[`configureStore component A, with reducer and saga 3`] = `
+Immutable.Map {
+  "config": "configState",
+  "other": Immutable.Map {},
+  "testReducerA": "Name A",
+}
+`;
+
+exports[`configureStore component B, with reducer and saga 1`] = `
+Immutable.Map {
+  "config": "configState",
+  "other": Immutable.Map {},
+  "testReducerA": "Name A",
+}
+`;
+
+exports[`configureStore component B, with reducer and saga 2`] = `null`;
+
+exports[`configureStore component B, with reducer and saga 3`] = `
+Immutable.Map {
+  "config": "configState",
+  "other": Immutable.Map {},
+  "testReducerA": "Name A",
+  "testReducerB": "Name B",
+}
+`;
+
+exports[`configureStore default store 1`] = `
+Immutable.Map {
+  "config": "configState",
+  "other": Immutable.Map {},
+}
+`;
