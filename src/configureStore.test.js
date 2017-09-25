@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {render} from "enzyme";
 import {compose, bindActionCreators} from "redux";
 import {connect} from "react-redux";
