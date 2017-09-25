@@ -1,0 +1,57 @@
+{
+  "name": "redux-inject-reducer-and-saga",
+  "version": "1.0.0",
+  "description": "Inject reducer and saga anywhere in the application.",
+  "main": "src/index.js",
+  "repository": "https://github.com/marcelmokos/redux-inject-reducer-and-saga.git",
+  "author": "Marcel Mokoš (https://github.com/marcelmokos)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "flow:setup": "yarn && flow-typed install && flow-typed update",
+    "flow": "flow --show-all-errors",
+    "flow:watch": "flow-watch",
+    "flow:coverage": "flow coverage ./src/ --color",
+    "prepush": "yarn test",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:update": "yarn test --update",
+    "test:coverage": "yarn test --coverage",
+    "lint": "eslint \"src/**\" --cache",
+    "lint:fix": "yarn lint --fix",
+    "lint:staged": "yarn lint:fix --max-warnings=0",
+    "precommit": "lint-staged"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "lint:staged",
+      "git add"
+    ],
+    "*.{json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.2.0",
+    "babel-preset-react-app": "^3.0.2",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.7.2",
+    "eslint-config-with-prettier": "^1.0.3",
+    "flow-bin": "^0.55.0",
+    "flow-typed": "^2.1.5",
+    "flow-watch": "^1.1.1",
+    "husky": "^0.14.3",
+    "jest": "^21.1.0",
+    "jest-serializer-enzyme": "^1.0.0",
+    "lint-staged": "^4.2.3",
+    "prettier": "^1.7.0"
+  }
+}
