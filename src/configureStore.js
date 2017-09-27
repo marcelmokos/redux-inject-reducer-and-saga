@@ -2,24 +2,40 @@
  * Create the store with dynamic reducers
  */
 
+import {combineReducers} from "redux-immutable";
 import {createStore, applyMiddleware, compose} from "redux";
 import {fromJS} from "immutable";
-// import { routerMiddleware } from 'react-router-redux';
+import {routerMiddleware} from "react-router-redux";
+import {memoryHistory} from "react-router-dom";
+import thunkMiddleware from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
+import routeReducer from "./utils/routeReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
+/**
+ * Creates the main reducer with the dynamically injected ones
+ */
+export function createReducer(injectedReducers) {
+  return combineReducers({
+    route: routeReducer,
+    ...injectedReducers,
+  });
+}
+
 export default function configureStore(
-  createReducer,
+  reducers = {},
   initialState = {},
-  history = {}, // eslint-disable-line no-unused-vars
+  history = memoryHistory,
 ) {
-  // Create the store with two middlewares
+  // Create the store with 3 middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
-  // 2. routerMiddleware: Syncs the location/URL path to the state
+  // 2. thunkMiddleware: Makes redux-thunk work
+  // 3. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     sagaMiddleware,
-    // routerMiddleware(history),
+    thunkMiddleware,
+    routerMiddleware(history),
   ];
 
   const enhancers = [applyMiddleware(...middlewares)];
@@ -39,14 +55,14 @@ export default function configureStore(
   /* eslint-enable */
 
   const store = createStore(
-    createReducer(),
+    createReducer(reducers),
     fromJS(initialState),
     composeEnhancers(...enhancers),
   );
 
   // Extensions
   store.runSaga = sagaMiddleware.run;
-  store.injectedReducers = {}; // Reducer registry
+  store.injectedReducers = reducers; // Reducer registry
   store.injectedSagas = {}; // Saga registry
 
   // Make reducers hot reloadable, see http://mxs.is/googmo

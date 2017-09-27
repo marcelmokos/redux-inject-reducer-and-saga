@@ -2,7 +2,6 @@
  * Test injectors
  */
 
-// import { memoryHistory } from 'react-router-dom';
 import {shallow} from "enzyme";
 import React from "react";
 import identity from "lodash/identity";

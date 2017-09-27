@@ -2,8 +2,10 @@
 
 exports[`configureStore component A, with reducer and saga 1`] = `
 Immutable.Map {
-  "config": "configState",
-  "other": Immutable.Map {},
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
 }
 `;
 
@@ -11,17 +13,21 @@ exports[`configureStore component A, with reducer and saga 2`] = `null`;
 
 exports[`configureStore component A, with reducer and saga 3`] = `
 Immutable.Map {
-  "config": "configState",
-  "other": Immutable.Map {},
-  "testReducerA": "Name A",
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
 }
 `;
 
 exports[`configureStore component B, with reducer and saga 1`] = `
 Immutable.Map {
-  "config": "configState",
-  "other": Immutable.Map {},
-  "testReducerA": "Name A",
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
 }
 `;
 
@@ -29,16 +35,45 @@ exports[`configureStore component B, with reducer and saga 2`] = `null`;
 
 exports[`configureStore component B, with reducer and saga 3`] = `
 Immutable.Map {
-  "config": "configState",
-  "other": Immutable.Map {},
-  "testReducerA": "Name A",
-  "testReducerB": "Name B",
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
+  "B/testReducer": "Name B",
+}
+`;
+
+exports[`configureStore component C, with reducer and using thunk 1`] = `
+Immutable.Map {
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
+  "B/testReducer": "Name B",
+}
+`;
+
+exports[`configureStore component C, with reducer and using thunk 2`] = `null`;
+
+exports[`configureStore component C, with reducer and using thunk 3`] = `
+Immutable.Map {
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
+  "B/testReducer": "Name B",
+  "C/testReducer": "Name C",
 }
 `;
 
 exports[`configureStore default store 1`] = `
 Immutable.Map {
-  "config": "configState",
-  "other": Immutable.Map {},
+  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
 }
 `;

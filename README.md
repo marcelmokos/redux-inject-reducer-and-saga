@@ -7,3 +7,222 @@
 [![dependency](https://david-dm.org/marcelmokos/redux-inject-reducer-and-saga/status.svg)](https://david-dm.org/marcelmokos/redux-inject-reducer-and-saga) 
 [![devDep](https://david-dm.org/marcelmokos/redux-inject-reducer-and-saga/dev-status.svg)](https://david-dm.org/marcelmokos/redux-inject-reducer-and-saga?type=dev)
 [![Known Vulnerabilities](https://snyk.io/test/github/marcelmokos/redux-inject-reducer-and-saga/badge.svg)](https://snyk.io/test/github/marcelmokos/redux-inject-reducer-and-saga) 
+
+Code highly influenced by [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate) with some modifications
+If you need more informations read [react-boilerplate docs](https://github.com/react-boilerplate/react-boilerplate/tree/master/docs) they are great.
+
+
+The library allows us to add reducers and sagas after the store was initialized.
+Since library wants to be universal and not decide what will be used it allows to use [redux-thunk](https://www.npmjs.com/package/redux-thunk) and [redux-saga](https://www.npmjs.com/package/redux-saga) simultaneously. With preference to use redux-saga.
+The library is set to use [immutable](https://www.npmjs.com/package/immutable) but developers can use simple object and arrays as state in reducers.
+[react-router v4](https://www.npmjs.com/package/react-router) is set and route reducer is included as default reducer.
+
+# Usage:
+### configureStore
+
+#### Without parameters
+- only default route reducer will be initialized
+```js
+import {configureStore} from "redux-inject-reducer-and-saga";
+
+const store = configureStore();
+expect(store.getState()).toMatchSnapshot();
+/*
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+}
+*/
+```
+
+#### With reducers parameter
+- reducers will be initialized with reducer's initialState
+```js
+import {configureStore} from "redux-inject-reducer-and-saga";
+
+function staticReducer(state = null) {
+ return state;
+}
+
+const reducers = {config: staticReducer};
+const store = configureStore(reducers);
+expect(store.getState()).toMatchSnapshot();
+/*
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "config": null,
+}
+*/
+```
+#### With reducers and initialState parameter
+- reducers will be initialized with initialState argument
+```js
+import {configureStore} from "redux-inject-reducer-and-saga";
+
+function staticReducer(state = null) {
+ return state;
+}
+
+const reducers = {config: staticReducer};
+const initialState = {config: true};
+const store = configureStore(reducers, initialState);
+expect(store.getState()).toMatchSnapshot();
+/*
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "config": true,
+}
+ */
+```
+
+## Inject Reducer and Saga
+```js
+import React from "react";
+import {render} from "enzyme";
+import {compose, bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {put, takeLatest} from "redux-saga/effects";
+import {configureStore, injectReducer, injectSaga} from "redux-inject-reducer-and-saga";
+
+const getWrappedSagaComponent = prefix => {
+  // constants
+  const NAME_SEND = `${prefix}/NAME_SEND`;
+  const NAME_SET = `${prefix}/NAME_SET`;
+
+  // actions
+  const nameSendAction = name => ({
+    type: NAME_SEND,
+    payload: name,
+  });
+
+  const nameSetAction = name => ({
+    type: NAME_SET,
+    payload: name,
+  });
+
+  // reducers
+  const reducer = (state = "no-name", {type, payload}) => {
+    switch (type) {
+      case NAME_SET:
+        return payload;
+      default:
+        return state;
+    }
+  };
+
+  // sagas
+  function* nameSetSaga(action) {
+    const name = action.payload;
+
+    yield put(nameSetAction(name));
+  }
+
+  function* saga() {
+    yield takeLatest(NAME_SEND, nameSetSaga);
+  }
+
+  const withReducer = injectReducer({key: `${prefix}/testReducer`, reducer});
+  const withSaga = injectSaga({key: `${prefix}/testSaga`, saga});
+  const withConnect = connect(
+    state => ({name: state[`${prefix}/testReducer`]}),
+    dispatch => bindActionCreators({nameSend: nameSendAction}, dispatch),
+  );
+
+  // eslint-disable-next-line no-shadow
+  return compose(withReducer, withSaga, withConnect)(({nameSend}) => {
+    nameSend(`Name ${prefix}`);
+
+    return null;
+  });
+};
+
+
+
+it("component A, with reducer and saga", () => {
+  const store = configureStore();
+  const WrappedComponent = getWrappedSagaComponent("A");
+
+  const component = render(<WrappedComponent />, {context: {store}});
+  expect(store.getState()).toMatchSnapshot();
+  /*
+  
+  Immutable.Map {
+    "route": Immutable.Map {
+      "location": null,
+    },
+    "A/testReducer": "Name A",
+  }
+  
+   */
+});
+```
+
+## Inject Reducer and use thunk
+```js
+import React from "react";
+import {render} from "enzyme";
+import {compose, bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {configureStore, injectReducer, injectSaga} from "redux-inject-reducer-and-saga";
+
+const getWrappedThunkComponent = prefix => {
+  // constants
+  const NAME_SET = `${prefix}/NAME_SET`;
+
+  const nameSet = name => ({
+    type: NAME_SET,
+    payload: name,
+  });
+
+  // reducers
+  const reducer = (state = "no-name", {type, payload}) => {
+    switch (type) {
+      case NAME_SET:
+        return payload;
+      default:
+        return state;
+    }
+  };
+
+  // thunks
+  const nameSendThunk = name => dispatch => dispatch(nameSet(name));
+
+  const withReducer = injectReducer({key: `${prefix}/testReducer`, reducer});
+  const withConnect = connect(
+    state => ({name: state[`${prefix}/testReducer`]}),
+    dispatch => bindActionCreators({sendName: nameSendThunk}, dispatch),
+  );
+
+  // eslint-disable-next-line no-shadow
+  return compose(withReducer, withConnect)(({sendName}) => {
+    sendName(`Name ${prefix}`);
+
+    return null;
+  });
+};
+
+it("component C, with reducer and saga", () => {
+  const store = configureStore();
+  const WrappedComponent = getWrappedThunkComponent("C");
+
+  const component = render(<WrappedComponent />, {context: {store}});
+  expect(store.getState()).toMatchSnapshot();
+  /*
+  
+  Immutable.Map {
+    "route": Immutable.Map {
+      "location": null,
+    },
+    "C/testReducer": "Name C",
+  }
+  
+   */
+});
+```
+
+More complex test: https://github.com/marcelmokos/redux-inject-reducer-and-saga/blob/master/src/configureStore.test.js

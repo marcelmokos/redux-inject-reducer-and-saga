@@ -52,9 +52,12 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-immutable": "^4.0.0",
-    "redux-saga": "^0.15.6"
+    "redux-saga": "^0.15.6",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.2.0",

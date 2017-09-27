@@ -2,7 +2,6 @@
  * Test injectors
  */
 
-// import { memoryHistory } from 'react-router-dom';
 import {put} from "redux-saga/effects";
 
 import configureStore from "./configureDefaultStore";
@@ -24,7 +23,7 @@ describe("injectors", () => {
 
   describe("getInjectors", () => {
     beforeEach(() => {
-      store = configureStore({}, {});
+      store = configureStore({});
     });
 
     it("should return injectors", () => {
@@ -45,7 +44,7 @@ describe("injectors", () => {
 
   describe("ejectSaga helper", () => {
     beforeEach(() => {
-      store = configureStore({}, {});
+      store = configureStore({});
       injectSaga = injectSagaFactory(store, true);
       ejectSaga = ejectSagaFactory(store, true);
     });
@@ -120,7 +119,7 @@ describe("injectors", () => {
 
   describe("injectSaga helper", () => {
     beforeEach(() => {
-      store = configureStore({}, {});
+      store = configureStore({});
       injectSaga = injectSagaFactory(store, true);
       ejectSaga = ejectSagaFactory(store, true);
     });
