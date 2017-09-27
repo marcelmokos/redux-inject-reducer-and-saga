@@ -1,29 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`configureStore component A, with reducer and saga 1`] = `
+exports[`configureStore and inject reducers, sagas and thunks component A, with reducer and saga 1`] = `
 Immutable.Map {
-  "config": true,
   "route": Immutable.Map {
     "location": null,
   },
 }
 `;
 
-exports[`configureStore component A, with reducer and saga 2`] = `null`;
+exports[`configureStore and inject reducers, sagas and thunks component A, with reducer and saga 2`] = `null`;
 
-exports[`configureStore component A, with reducer and saga 3`] = `
+exports[`configureStore and inject reducers, sagas and thunks component A, with reducer and saga 3`] = `
 Immutable.Map {
-  "config": true,
-  "route": Immutable.Map {
-    "location": null,
-  },
-  "A/testReducer": "Name A",
-}
-`;
-
-exports[`configureStore component B, with reducer and saga 1`] = `
-Immutable.Map {
-  "config": true,
   "route": Immutable.Map {
     "location": null,
   },
@@ -31,11 +19,19 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore component B, with reducer and saga 2`] = `null`;
-
-exports[`configureStore component B, with reducer and saga 3`] = `
+exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 1`] = `
 Immutable.Map {
-  "config": true,
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
+}
+`;
+
+exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 2`] = `null`;
+
+exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 3`] = `
+Immutable.Map {
   "route": Immutable.Map {
     "location": null,
   },
@@ -44,9 +40,8 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore component C, with reducer and using thunk 1`] = `
+exports[`configureStore and inject reducers, sagas and thunks component C, with reducer and using thunk 1`] = `
 Immutable.Map {
-  "config": true,
   "route": Immutable.Map {
     "location": null,
   },
@@ -55,11 +50,10 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore component C, with reducer and using thunk 2`] = `null`;
+exports[`configureStore and inject reducers, sagas and thunks component C, with reducer and using thunk 2`] = `null`;
 
-exports[`configureStore component C, with reducer and using thunk 3`] = `
+exports[`configureStore and inject reducers, sagas and thunks component C, with reducer and using thunk 3`] = `
 Immutable.Map {
-  "config": true,
   "route": Immutable.Map {
     "location": null,
   },
@@ -69,11 +63,36 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore default store 1`] = `
+exports[`configureStore and inject reducers, sagas and thunks default store 1`] = `
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+}
+`;
+
+exports[`configureStore default store, without parameters 1`] = `
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+}
+`;
+
+exports[`configureStore store with reducers and initialState parameter 1`] = `
 Immutable.Map {
   "config": true,
   "route": Immutable.Map {
     "location": null,
   },
+}
+`;
+
+exports[`configureStore store with reducers parameter 1`] = `
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "config": null,
 }
 `;

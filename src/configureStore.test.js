@@ -61,7 +61,7 @@ const getWrappedThunkComponent = prefix => {
   // constants
   const NAME_SET = `${prefix}/NAME_SET`;
 
-  const nameSet = name => ({
+  const nameSetAction = name => ({
     type: NAME_SET,
     payload: name,
   });
@@ -77,31 +77,55 @@ const getWrappedThunkComponent = prefix => {
   };
 
   // thunks
-  const nameSendThunk = name => dispatch => dispatch(nameSet(name));
+  const nameSendThunk = name => dispatch => dispatch(nameSetAction(name));
 
   const withReducer = injectReducer({key: `${prefix}/testReducer`, reducer});
   const withConnect = connect(
     state => ({name: state[`${prefix}/testReducer`]}),
-    dispatch => bindActionCreators({sendName: nameSendThunk}, dispatch),
+    dispatch => bindActionCreators({nameSend: nameSendThunk}, dispatch),
   );
 
   // eslint-disable-next-line no-shadow
-  return compose(withReducer, withConnect)(({sendName}) => {
-    sendName(`Name ${prefix}`);
+  return compose(withReducer, withConnect)(({nameSend}) => {
+    nameSend(`Name ${prefix}`);
 
     return null;
   });
 };
 
-function staticReducer(state = null) {
-  return state;
-}
-
 describe("configureStore", () => {
+  it("default store, without parameters", () => {
+    const store = configureStore();
+    expect(store.getState()).toMatchSnapshot();
+  });
+
+  it("store with reducers parameter", () => {
+    function staticReducer(state = null) {
+      return state;
+    }
+
+    const reducers = {config: staticReducer};
+    const store = configureStore(reducers);
+    expect(store.getState()).toMatchSnapshot();
+  });
+
+  it("store with reducers and initialState parameter", () => {
+    function staticReducer(state = null) {
+      return state;
+    }
+
+    const reducers = {config: staticReducer};
+    const initialState = {config: true};
+    const store = configureStore(reducers, initialState);
+    expect(store.getState()).toMatchSnapshot();
+  });
+});
+
+describe("configureStore and inject reducers, sagas and thunks", () => {
   let store;
 
   beforeAll(() => {
-    store = configureStore({config: staticReducer}, {config: true});
+    store = configureStore();
   });
 
   it("default store", () => {

@@ -1,4 +1,4 @@
-# redux-inject-reducer-and-saga
+# 💉 redux-inject-reducer-and-saga
 
 [![npm version](https://img.shields.io/npm/v/redux-inject-reducer-and-saga.svg?style=flat)](https://www.npmjs.com/package/redux-inject-reducer-and-saga) 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) 
@@ -142,9 +142,9 @@ const getWrappedSagaComponent = prefix => {
 };
 
 
+const store = configureStore();
 
 it("component A, with reducer and saga", () => {
-  const store = configureStore();
   const WrappedComponent = getWrappedSagaComponent("A");
 
   const component = render(<WrappedComponent />, {context: {store}});
@@ -155,7 +155,26 @@ it("component A, with reducer and saga", () => {
     "route": Immutable.Map {
       "location": null,
     },
+    "A/testReducer": "Name A", // 💉
+  }
+  
+   */
+});
+
+it("component B, with reducer and saga", () => {
+  const WrappedComponent = getWrappedSagaComponent("B");
+
+  // store used from previous example
+  const component = render(<WrappedComponent />, {context: {store}});
+  expect(store.getState()).toMatchSnapshot();
+  /*
+  
+  Immutable.Map {
+    "route": Immutable.Map {
+      "location": null,
+    },
     "A/testReducer": "Name A",
+    "B/testReducer": "Name B", // 💉
   }
   
    */
@@ -174,7 +193,7 @@ const getWrappedThunkComponent = prefix => {
   // constants
   const NAME_SET = `${prefix}/NAME_SET`;
 
-  const nameSet = name => ({
+  const nameSetAction = name => ({
     type: NAME_SET,
     payload: name,
   });
@@ -190,26 +209,26 @@ const getWrappedThunkComponent = prefix => {
   };
 
   // thunks
-  const nameSendThunk = name => dispatch => dispatch(nameSet(name));
+  const nameSendThunk = name => dispatch => dispatch(nameSetAction(name));
 
   const withReducer = injectReducer({key: `${prefix}/testReducer`, reducer});
   const withConnect = connect(
     state => ({name: state[`${prefix}/testReducer`]}),
-    dispatch => bindActionCreators({sendName: nameSendThunk}, dispatch),
+    dispatch => bindActionCreators({nameSend: nameSendThunk}, dispatch),
   );
 
   // eslint-disable-next-line no-shadow
-  return compose(withReducer, withConnect)(({sendName}) => {
-    sendName(`Name ${prefix}`);
+  return compose(withReducer, withConnect)(({nameSend}) => {
+    nameSend(`Name ${prefix}`);
 
     return null;
   });
 };
 
 it("component C, with reducer and saga", () => {
-  const store = configureStore();
   const WrappedComponent = getWrappedThunkComponent("C");
 
+  // store used from previous examples
   const component = render(<WrappedComponent />, {context: {store}});
   expect(store.getState()).toMatchSnapshot();
   /*
@@ -218,7 +237,9 @@ it("component C, with reducer and saga", () => {
     "route": Immutable.Map {
       "location": null,
     },
-    "C/testReducer": "Name C",
+    "A/testReducer": "Name A",
+    "B/testReducer": "Name B",
+    "C/testReducer": "Name C", // 💉
   }
   
    */
