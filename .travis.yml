@@ -6,4 +6,12 @@ node_js:
 script:
   - npm run-script lint
   - npm run-script test:coverage
-  - npm run-script test:coveralls
+  - npm run-script test:dist
+
+after_success:
+  - npm run-script coveralls
+
+cache:
+  yarn: true
+  directories:
+    - node_modules

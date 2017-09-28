@@ -232,4 +232,5 @@ $RECYCLE.BIN/
 ### Custom .gitignore
 
 /flow-typed/npm
+flow-coverage
 dist

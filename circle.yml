@@ -10,4 +10,5 @@ test:
   override:
     - npm run-script lint
     - npm run-script test:coverage
-    - npm run-script test:coveralls
+    - npm run-script test:dist
+    - npm run-script coveralls
