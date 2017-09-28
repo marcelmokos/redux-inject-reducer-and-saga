@@ -232,4 +232,4 @@ $RECYCLE.BIN/
 ### Custom .gitignore
 
 /flow-typed/npm
-
+dist
