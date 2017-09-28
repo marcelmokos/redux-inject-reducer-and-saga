@@ -64,6 +64,7 @@ export default function configureStore(
   store.runSaga = sagaMiddleware.run;
   store.injectedReducers = reducers; // Reducer registry
   store.injectedSagas = {}; // Saga registry
+  store.history = history; // history
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */

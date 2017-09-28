@@ -17,6 +17,15 @@ Since library wants to be universal and not decide what will be used it allows t
 The library is set to use [immutable](https://www.npmjs.com/package/immutable) but developers can use simple object and arrays as state in reducers.
 [react-router v4](https://www.npmjs.com/package/react-router) is set and route reducer is included as default reducer.
 
+# Install:
+
+```bash
+yarn add redux-inject-reducer-and-saga
+```
+```bash
+npm install --save-dev redux-inject-reducer-and-saga
+```
+
 # Usage:
 ### configureStore
 
@@ -53,7 +62,7 @@ Immutable.Map {
   "route": Immutable.Map {
     "location": null,
   },
-  "config": null,
+  "config": null, // 💉
 }
 */
 ```
@@ -75,7 +84,7 @@ Immutable.Map {
   "route": Immutable.Map {
     "location": null,
   },
-  "config": true,
+  "config": true, // 💉
 }
  */
 ```
