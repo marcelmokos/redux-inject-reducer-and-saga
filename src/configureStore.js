@@ -6,7 +6,7 @@ import {combineReducers} from "redux-immutable";
 import {createStore, applyMiddleware, compose} from "redux";
 import {fromJS} from "immutable";
 import {routerMiddleware} from "react-router-redux";
-import {memoryHistory} from "react-router-dom";
+import {createMemoryHistory} from "history";
 import thunkMiddleware from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 import routeReducer from "./utils/routeReducer";
@@ -26,7 +26,7 @@ export function createReducer(injectedReducers) {
 export default function configureStore(
   reducers = {},
   initialState = {},
-  history = memoryHistory,
+  history = createMemoryHistory(),
 ) {
   // Create the store with 3 middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
@@ -68,7 +68,7 @@ export default function configureStore(
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
-    module.hot.accept("./reducers", () => {
+    module.hot.accept("./configureStore.js", () => {
       store.replaceReducer(createReducer(store.injectedReducers));
     });
   }
