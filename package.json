@@ -1,6 +1,6 @@
 {
   "name": "redux-inject-reducer-and-saga",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Inject reducer and saga anywhere in the application.",
   "main": "dist/index.js",
   "repository": "https://github.com/marcelmokos/redux-inject-reducer-and-saga.git",
