@@ -92,7 +92,7 @@ Immutable.Map {
 ## Inject Reducer and Saga
 ```js
 import React from "react";
-import {render} from "enzyme";
+import {mount} from "enzyme";
 import {compose, bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {put, takeLatest} from "redux-saga/effects";
@@ -138,16 +138,31 @@ const getWrappedSagaComponent = prefix => {
   const withReducer = injectReducer({key: `${prefix}/testReducer`, reducer});
   const withSaga = injectSaga({key: `${prefix}/testSaga`, saga});
   const withConnect = connect(
-    state => ({name: state[`${prefix}/testReducer`]}),
-    dispatch => bindActionCreators({nameSend: nameSendAction}, dispatch),
+    state => ({name: state.get(`${prefix}/testReducer`)}), // mapStateToProps
+    dispatch => bindActionCreators({nameSend: nameSendAction}, dispatch), // mapDispatchToProps
   );
 
-  // eslint-disable-next-line no-shadow
-  return compose(withReducer, withSaga, withConnect)(({nameSend}) => {
-    nameSend(`Name ${prefix}`);
+  type Props = {
+    name: string,
+    nameSend: string => void,
+  };
 
-    return null;
-  });
+  class Component extends React.Component<Props, any> {
+    componentDidMount() {
+      this.props.nameSend(`Name ${prefix}`);
+    }
+
+    render() {
+      return <span>{this.props.name}</span>;
+    }
+  }
+
+  // eslint-disable-next-line no-shadow
+  return compose(
+    withReducer, 
+    withSaga, 
+    withConnect,
+  )(Component);
 };
 
 
@@ -156,7 +171,7 @@ const store = configureStore();
 it("component A, with reducer and saga", () => {
   const WrappedComponent = getWrappedSagaComponent("A");
 
-  const component = render(<WrappedComponent />, {context: {store}});
+  const component = mount(<WrappedComponent />, {context: {store}});
   expect(store.getState()).toMatchSnapshot();
   /*
   
@@ -174,7 +189,7 @@ it("component B, with reducer and saga", () => {
   const WrappedComponent = getWrappedSagaComponent("B");
 
   // store used from previous example
-  const component = render(<WrappedComponent />, {context: {store}});
+  const component = mount(<WrappedComponent />, {context: {store}});
   expect(store.getState()).toMatchSnapshot();
   /*
   
@@ -193,7 +208,7 @@ it("component B, with reducer and saga", () => {
 ## Inject Reducer and use thunk
 ```js
 import React from "react";
-import {render} from "enzyme";
+import {mount} from "enzyme";
 import {compose, bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {configureStore, injectReducer, injectSaga} from "redux-inject-reducer-and-saga";
@@ -222,23 +237,37 @@ const getWrappedThunkComponent = prefix => {
 
   const withReducer = injectReducer({key: `${prefix}/testReducer`, reducer});
   const withConnect = connect(
-    state => ({name: state[`${prefix}/testReducer`]}),
-    dispatch => bindActionCreators({nameSend: nameSendThunk}, dispatch),
+    state => ({name: state.get(`${prefix}/testReducer`)}), // mapStateToProps
+    dispatch => bindActionCreators({nameSend: nameSendThunk}, dispatch), // mapDispatchToProps
   );
 
-  // eslint-disable-next-line no-shadow
-  return compose(withReducer, withConnect)(({nameSend}) => {
-    nameSend(`Name ${prefix}`);
+  type Props = {
+    name: string,
+    nameSend: string => void,
+  };
 
-    return null;
-  });
+  class Component extends React.Component<Props, any> {
+    componentDidMount() {
+      this.props.nameSend(`Name ${prefix}`);
+    }
+
+    render() {
+      return <span>{this.props.name}</span>;
+    }
+  }
+  
+  // eslint-disable-next-line no-shadow
+  return compose(
+    withReducer, 
+    withConnect,
+  )(Component);
 };
 
 it("component C, with reducer and saga", () => {
   const WrappedComponent = getWrappedThunkComponent("C");
 
   // store used from previous examples
-  const component = render(<WrappedComponent />, {context: {store}});
+  const component = mount(<WrappedComponent />, {context: {store}});
   expect(store.getState()).toMatchSnapshot();
   /*
   

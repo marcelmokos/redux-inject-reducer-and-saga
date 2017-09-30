@@ -8,7 +8,22 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore and inject reducers, sagas and thunks component A, with reducer and saga 2`] = `null`;
+exports[`configureStore and inject reducers, sagas and thunks component A, with reducer and saga 2`] = `
+<withReducer(withSaga(Connect(Component)))>
+  <withSaga(Connect(Component))>
+    <Connect(Component)>
+      <Component
+        name="Name A"
+        nameSend={[Function]}
+      >
+        <span>
+          Name A
+        </span>
+      </Component>
+    </Connect(Component)>
+  </withSaga(Connect(Component))>
+</withReducer(withSaga(Connect(Component)))>
+`;
 
 exports[`configureStore and inject reducers, sagas and thunks component A, with reducer and saga 3`] = `
 Immutable.Map {
@@ -28,7 +43,22 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 2`] = `null`;
+exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 2`] = `
+<withReducer(withSaga(Connect(Component)))>
+  <withSaga(Connect(Component))>
+    <Connect(Component)>
+      <Component
+        name="Name B"
+        nameSend={[Function]}
+      >
+        <span>
+          Name B
+        </span>
+      </Component>
+    </Connect(Component)>
+  </withSaga(Connect(Component))>
+</withReducer(withSaga(Connect(Component)))>
+`;
 
 exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 3`] = `
 Immutable.Map {
@@ -50,7 +80,20 @@ Immutable.Map {
 }
 `;
 
-exports[`configureStore and inject reducers, sagas and thunks component C, with reducer and using thunk 2`] = `null`;
+exports[`configureStore and inject reducers, sagas and thunks component C, with reducer and using thunk 2`] = `
+<withReducer(Connect(Component))>
+  <Connect(Component)>
+    <Component
+      name="Name C"
+      nameSend={[Function]}
+    >
+      <span>
+        Name C
+      </span>
+    </Component>
+  </Connect(Component)>
+</withReducer(Connect(Component))>
+`;
 
 exports[`configureStore and inject reducers, sagas and thunks component C, with reducer and using thunk 3`] = `
 Immutable.Map {
