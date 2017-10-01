@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {put, takeLatest} from "redux-saga/effects";
 import {configureStore, injectReducer, injectSaga} from "./";
 
+const {describe, beforeAll, it, expect} = global;
+
 const getWrappedSagaComponent = prefix => {
   // constants
   const NAME_SEND = `${prefix}/NAME_SEND`;
