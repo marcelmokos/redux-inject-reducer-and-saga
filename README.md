@@ -157,7 +157,7 @@ const getWrappedSagaComponent = prefix => {
     }
   }
 
-  // eslint-disable-next-line no-shadow
+  // prettier-ignore
   return compose(
     withReducer, 
     withSaga, 
@@ -256,7 +256,7 @@ const getWrappedThunkComponent = prefix => {
     }
   }
   
-  // eslint-disable-next-line no-shadow
+  // prettier-ignore
   return compose(
     withReducer, 
     withConnect,
