@@ -27,18 +27,20 @@ export default function configureStore(
   reducers = {},
   initialState = {},
   history = createMemoryHistory(),
+  middlewares = [],
 ) {
   // Create the store with 3 middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. thunkMiddleware: Makes redux-thunk work
   // 3. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [
+  const middlewaresToApply = [
     sagaMiddleware,
     thunkMiddleware,
     routerMiddleware(history),
+    ...middlewares,
   ];
 
-  const enhancers = [applyMiddleware(...middlewares)];
+  const enhancers = [applyMiddleware(...middlewaresToApply)];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
