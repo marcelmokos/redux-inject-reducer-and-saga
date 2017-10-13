@@ -33,7 +33,7 @@
     "test:watch": "yarn test --watch",
     "test:update": "yarn test --update",
     "test:coverage": "jest /src/ --coverage",
-    "test:dist": "npm run prepublish && jest /dist/ --coverage",
+    "test:dist": "npm run prepublishOnly && jest /dist/ --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint . --cache",
     "lint:fix": "yarn lint --fix",
