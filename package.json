@@ -38,7 +38,7 @@
     "lint": "eslint . --cache",
     "lint:fix": "yarn lint --fix",
     "lint:staged": "yarn lint:fix --max-warnings=0",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && yarn run test --onlyChanged --silent",
     "size": "size-limit",
     "size:why": "size-limit --why",
     "clean": "rimraf dist coverage",
