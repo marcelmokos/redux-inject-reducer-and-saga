@@ -323,6 +323,10 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
+async-limiter@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
+
 async@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/async/-/async-2.4.1.tgz#62a56b279c98a11d0987096a01cc3eeb8eb7bbd7"
@@ -1928,6 +1932,13 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+dir-glob@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dir-glob/-/dir-glob-2.0.0.tgz#0b205d2b6aef98238ca286598a8204d29d0a0034"
+  dependencies:
+    arrify "^1.0.1"
+    path-type "^3.0.0"
+
 discontinuous-range@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/discontinuous-range/-/discontinuous-range-1.0.0.tgz#e38331f0844bba49b9a9cb71c771585aab1bc65a"
@@ -2081,9 +2092,9 @@ entities@^1.1.1, entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
-enzyme-adapter-react-16@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.4.tgz#67f898cc053452f5c786424e395fe0c63a0607fe"
+enzyme-adapter-react-16@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.1.0.tgz#86c5db7c10f0be6ec25d54ca41b59f2abb397cf4"
   dependencies:
     enzyme-adapter-utils "^1.1.0"
     lodash "^4.17.4"
@@ -2106,19 +2117,20 @@ enzyme-to-json@^3.2.2:
   dependencies:
     lodash "^4.17.4"
 
-enzyme@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.1.1.tgz#c6948dfccd055d75fbd8627ad1c96a024d0e247b"
+enzyme@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.2.0.tgz#998bdcda0fc71b8764a0017f7cc692c943f54a7a"
   dependencies:
     cheerio "^1.0.0-rc.2"
     function.prototype.name "^1.0.3"
+    has "^1.0.1"
     is-subset "^0.1.1"
     lodash "^4.17.4"
     object-is "^1.0.1"
     object.assign "^4.0.4"
     object.entries "^1.0.4"
     object.values "^1.0.4"
-    raf "^3.3.2"
+    raf "^3.4.0"
     rst-selector-parser "^2.2.3"
 
 errno@^0.1.3, errno@^0.1.4:
@@ -2243,26 +2255,26 @@ eslint-config-airbnb@^16.1.0:
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
 
-eslint-config-prettier@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.7.0.tgz#7bbfef66ad783277836f4ea556e68b9bcc9da4d0"
+eslint-config-prettier@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.8.0.tgz#929861a11de0249677686eba908118175d1a26bc"
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-with-prettier@^2.1.9:
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/eslint-config-with-prettier/-/eslint-config-with-prettier-2.1.9.tgz#5c8134978d2809378fa9cf556ddd68f6a0694c3d"
+eslint-config-with-prettier@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-with-prettier/-/eslint-config-with-prettier-2.2.1.tgz#58805cc82aae80f7e5d0e496154aab8978cef6b8"
   dependencies:
     babel-eslint "^8.0.2"
     eslint "^4.11.0"
     eslint-config-airbnb "^16.1.0"
-    eslint-config-prettier "^2.7.0"
+    eslint-config-prettier "^2.8.0"
     eslint-plugin-flowtype "^2.39.1"
     eslint-plugin-import "^2.8.0"
     eslint-plugin-jest "^21.3.2"
     eslint-plugin-jsx-a11y "^6.0.2"
     eslint-plugin-prettier "^2.3.1"
-    eslint-plugin-react "^7.4.0"
+    eslint-plugin-react "^7.5.1"
     json "^9.0.6"
     prettier "^1.8.2"
 
@@ -2324,14 +2336,14 @@ eslint-plugin-prettier@^2.3.1:
     fast-diff "^1.1.1"
     jest-docblock "^21.0.0"
 
-eslint-plugin-react@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.4.0.tgz#300a95861b9729c087d362dd64abcc351a74364a"
+eslint-plugin-react@^7.5.1:
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.5.1.tgz#52e56e8d80c810de158859ef07b880d2f56ee30b"
   dependencies:
     doctrine "^2.0.0"
     has "^1.0.1"
     jsx-ast-utils "^2.0.0"
-    prop-types "^15.5.10"
+    prop-types "^15.6.0"
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"
@@ -3018,15 +3030,16 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-globby@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
+globby@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-7.1.1.tgz#fb2ccff9401f8600945dfada97440cca972b8680"
   dependencies:
     array-union "^1.0.1"
-    glob "^7.0.3"
-    object-assign "^4.0.1"
-    pify "^2.0.0"
-    pinkie-promise "^2.0.0"
+    dir-glob "^2.0.0"
+    glob "^7.1.2"
+    ignore "^3.3.5"
+    pify "^3.0.0"
+    slash "^1.0.0"
 
 got@^7.1.0:
   version "7.1.0"
@@ -3312,6 +3325,10 @@ iferr@^0.1.5:
 ignore@^3.3.3:
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.5.tgz#c4e715455f6073a8d7e5dae72d2fc9d71663dba6"
+
+ignore@^3.3.5:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.7.tgz#612289bfb3c220e186a58118618d5be8c1bab021"
 
 immutable@^3.8.2:
   version "3.8.2"
@@ -5399,7 +5416,7 @@ querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
-raf@^3.3.2, raf@^3.4.0:
+raf@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   dependencies:
@@ -5902,10 +5919,6 @@ safe-buffer@5.1.1, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, s
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-safe-buffer@~5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
-
 sane@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/sane/-/sane-2.2.0.tgz#d6d2e2fcab00e3d283c93b912b7c3a20846f1d56"
@@ -6006,9 +6019,9 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
-size-limit@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.13.1.tgz#b70fa5250cbd28f376b661636a21c94431a3a867"
+size-limit@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.13.2.tgz#ec743b64db055c524801f2800de417be3742e67f"
   dependencies:
     bytes "^3.0.0"
     chalk "^2.3.0"
@@ -6018,14 +6031,14 @@ size-limit@^0.13.1:
     css-loader "^0.28.7"
     escape-string-regexp "^1.0.5"
     file-loader "^1.1.5"
-    globby "^6.1.0"
+    globby "^7.1.1"
     gzip-size "^4.0.0"
     memory-fs "^0.4.1"
     read-pkg-up "^3.0.0"
     style-loader "^0.19.0"
-    uglifyjs-webpack-plugin "^1.0.1"
+    uglifyjs-webpack-plugin "^1.1.0"
     webpack "^3.8.1"
-    webpack-bundle-analyzer "^2.9.0"
+    webpack-bundle-analyzer "^2.9.1"
     yargs "^10.0.3"
 
 slash@^1.0.0:
@@ -6505,14 +6518,14 @@ uglifyjs-webpack-plugin@^0.4.6:
     uglify-js "^2.8.29"
     webpack-sources "^1.0.1"
 
-uglifyjs-webpack-plugin@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.0.1.tgz#d324da7144d321202df0968c09f6f8e057d5cdc2"
+uglifyjs-webpack-plugin@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.1.1.tgz#6167c5aae218ee8109de8920bb769b8acbc55d03"
   dependencies:
     cacache "^10.0.0"
     find-cache-dir "^1.0.0"
     schema-utils "^0.3.0"
-    source-map "^0.5.6"
+    source-map "^0.6.1"
     uglify-es "^3.1.3"
     webpack-sources "^1.0.1"
     worker-farm "^1.4.1"
@@ -6687,9 +6700,9 @@ webidl-conversions@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
 
-webpack-bundle-analyzer@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.9.0.tgz#b58bc34cc30b27ffdbaf3d00bf27aba6fa29c6e3"
+webpack-bundle-analyzer@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.9.1.tgz#c2c8e03e8e5768ed288b39ae9e27a8b8d7b9d476"
   dependencies:
     acorn "^5.1.1"
     chalk "^1.1.3"
@@ -6701,7 +6714,7 @@ webpack-bundle-analyzer@^2.9.0:
     lodash "^4.17.4"
     mkdirp "^0.5.1"
     opener "^1.4.3"
-    ws "^2.3.1"
+    ws "^3.3.1"
 
 webpack-sources@^1.0.1:
   version "1.0.1"
@@ -6830,11 +6843,12 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-ws@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-2.3.1.tgz#6b94b3e447cb6a363f785eaf94af6359e8e81c80"
+ws@^3.3.1:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-3.3.2.tgz#96c1d08b3fefda1d5c1e33700d3bfaa9be2d5608"
   dependencies:
-    safe-buffer "~5.0.1"
+    async-limiter "~1.0.0"
+    safe-buffer "~5.1.0"
     ultron "~1.1.0"
 
 xml-name-validator@^2.0.1:
