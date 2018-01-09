@@ -91,7 +91,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.2.2",
     "eslint": "^4.15.0",
-    "eslint-config-with-prettier": "^2.3.0",
+    "eslint-config-with-prettier": "^2.4.0",
     "flow-bin": "^0.63.1",
     "flow-coverage-report": "^0.4.0",
     "flow-typed": "^2.2.3",
