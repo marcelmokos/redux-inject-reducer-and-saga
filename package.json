@@ -85,23 +85,23 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.0",
+    "babel-preset-react-app": "^3.1.1",
     "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.2.2",
-    "eslint": "^4.15.0",
-    "eslint-config-with-prettier": "^2.4.0",
+    "enzyme-to-json": "^3.3.1",
+    "eslint": "^4.16.0",
+    "eslint-config-with-prettier": "^2.5.0",
     "flow-bin": "^0.63.1",
-    "flow-coverage-report": "^0.4.0",
+    "flow-coverage-report": "^0.4.1",
     "flow-typed": "^2.2.3",
     "husky": "^0.14.3",
-    "jest": "^22.0.4",
-    "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2",
+    "jest": "^22.1.4",
+    "lint-staged": "^6.0.1",
+    "prettier": "^1.10.2",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.2.0",
     "rimraf": "^2.6.2",
-    "size-limit": "^0.13.2"
+    "size-limit": "^0.14.0"
   }
 }
