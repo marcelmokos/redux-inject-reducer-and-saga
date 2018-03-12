@@ -34,6 +34,45 @@ Immutable.Map {
 }
 `;
 
+exports[`configureStore and inject reducers, sagas and thunks component A2, with reducer and saga should not override current state 1`] = `
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
+  "B/testReducer": "Name B",
+  "C/testReducer": "Name C",
+}
+`;
+
+exports[`configureStore and inject reducers, sagas and thunks component A2, with reducer and saga should not override current state 2`] = `
+<withReducer(withSaga(Connect(Component)))>
+  <withSaga(Connect(Component))>
+    <Connect(Component)>
+      <Component
+        name="Name A"
+        nameSend={[Function]}
+      >
+        <span>
+          Name A
+        </span>
+      </Component>
+    </Connect(Component)>
+  </withSaga(Connect(Component))>
+</withReducer(withSaga(Connect(Component)))>
+`;
+
+exports[`configureStore and inject reducers, sagas and thunks component A2, with reducer and saga should not override current state 3`] = `
+Immutable.Map {
+  "route": Immutable.Map {
+    "location": null,
+  },
+  "A/testReducer": "Name A",
+  "B/testReducer": "Name B",
+  "C/testReducer": "Name C",
+}
+`;
+
 exports[`configureStore and inject reducers, sagas and thunks component B, with reducer and saga 1`] = `
 Immutable.Map {
   "route": Immutable.Map {

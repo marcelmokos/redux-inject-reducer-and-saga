@@ -8,7 +8,7 @@ import {configureStore, injectReducer, injectSaga} from "./";
 
 const {describe, beforeAll, it, expect} = global;
 
-const getWrappedSagaComponent = prefix => {
+const getWrappedSagaComponent = (prefix, isSetting = true) => {
   // constants
   const NAME_SEND = `${prefix}/NAME_SEND`;
   const NAME_SET = `${prefix}/NAME_SET`;
@@ -59,7 +59,9 @@ const getWrappedSagaComponent = prefix => {
 
   class Component extends React.Component<Props, any> {
     componentDidMount() {
-      this.props.nameSend(`Name ${prefix}`);
+      if (isSetting) {
+        this.props.nameSend(`Name ${prefix}`);
+      }
     }
 
     render() {
@@ -184,6 +186,15 @@ describe("configureStore and inject reducers, sagas and thunks", () => {
 
   it("component C, with reducer and using thunk", () => {
     const WrappedComponent = getWrappedThunkComponent("C");
+
+    expect(store.getState()).toMatchSnapshot();
+    const component = mount(<WrappedComponent />, {context: {store}});
+    expect(component).toMatchSnapshot();
+    expect(store.getState()).toMatchSnapshot();
+  });
+
+  it("component A2, with reducer and saga should not override current state", () => {
+    const WrappedComponent = getWrappedSagaComponent("A", false);
 
     expect(store.getState()).toMatchSnapshot();
     const component = mount(<WrappedComponent />, {context: {store}});
