@@ -1,3 +1,21 @@
 {
-  "presets": ["react-app"]
+  "presets": [
+    "react-app"
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "ie": 10,
+            "browsers": [
+             "last 4 versions"
+            ]
+          },
+          "forceAllTransforms": true
+        }],
+          "react-app"
+        ]
+      }
+  }
 }

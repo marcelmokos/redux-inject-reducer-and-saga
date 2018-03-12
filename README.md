@@ -26,6 +26,11 @@ yarn add redux-inject-reducer-and-saga
 npm install --save-dev redux-inject-reducer-and-saga
 ```
 
+# Target browsers .babelrc
+- adding polyfils is on the library consumer
+- IE >= 10
+- browsers: `["last 4 versions"]`
+
 # Usage:
 ### configureStore
 
