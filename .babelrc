@@ -16,6 +16,18 @@
         }],
           "react-app"
         ]
-      }
+      },
+    // test environment transforms
+    "test": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "node": "current"
+          }
+        }],
+        "react-app"
+      ],
+      "compact": false
+    }
   }
 }
