@@ -25,9 +25,8 @@ export default ({key, saga, mode}) => WrappedComponent => {
       WrappedComponent.name ||
       "Component"})`;
 
-    constructor(props, context) {
-      super(props, context);
-
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
       const {injectSaga} = this.injectors;
 
       injectSaga(key, {saga, mode}, this.props);

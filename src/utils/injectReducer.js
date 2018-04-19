@@ -21,9 +21,8 @@ export default ({key, reducer}) => WrappedComponent => {
       WrappedComponent.name ||
       "Component"})`;
 
-    constructor(props, context) {
-      super(props, context);
-
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
       const {injectReducer} = this.injectors;
 
       injectReducer(key, reducer);
