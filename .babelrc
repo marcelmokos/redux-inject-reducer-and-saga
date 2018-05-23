@@ -2,9 +2,6 @@
   "presets": [
     "react-app"
   ],
-  "plugins": [
-    "lodash"
-  ],
   "env": {
     "production": {
       "presets": [
@@ -18,9 +15,6 @@
           "forceAllTransforms": true
         }],
           "react-app"
-      ],
-      "plugins": [
-        "lodash"
       ]
     },
     // test environment transforms
