@@ -1,6 +1,6 @@
 {
   "name": "redux-inject-reducer-and-saga",
-  "version": "5.0.2",
+  "version": "6.0.0",
   "description": "Inject reducer and saga anywhere in the application.",
   "main": "dist/index.js",
   "repository": "https://github.com/marcelmokos/redux-inject-reducer-and-saga.git",
@@ -66,23 +66,24 @@
     ]
   },
   "peerDependencies": {
+    "history": "^4.7.2",
     "immutable": "^4.0.0-rc.9",
     "lodash": "^4.15.0-0",
+    "prop-types": "^15.6.0-0",
     "react": "^16.3.0-0",
-    "react-dom": "^16.3.0-0"
+    "react-dom": "^16.3.0-0",
+    "react-redux": "^5.0.0-0",
+    "react-router-dom": "^4.3.0",
+    "redux": "^3.0.0 || ^4.0.0-0",
+    "redux-immutable": "^4.0.0-0",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0"
   },
   "dependencies": {
     "history": "^4.7.2",
-    "hoist-non-react-statics": "^2.5.0",
+    "hoist-non-react-statics": "^2.5.5",
     "invariant": "^2.2.4",
-    "prop-types": "^15.6.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "5.0.0-alpha.8",
-    "redux": "^3.7.2",
-    "redux-immutable": "^4.0.0",
-    "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0"
+    "react-router-redux": "5.0.0-alpha.8"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -93,21 +94,29 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "eslint": "^4.19.1",
-    "eslint-config-with-prettier": "^3.4.0",
-    "flow-bin": "^0.72.0",
+    "eslint-config-with-prettier": "^3.5.1",
+    "flow-bin": "^0.74.0",
     "flow-coverage-report": "^0.5.0",
     "flow-typed": "^2.4.0",
     "husky": "^0.14.3",
     "immutable": "^4.0.0-rc.9",
-    "jest": "^22.4.4",
-    "lint-staged": "^7.1.2",
+    "jest": "^23.1.0",
+    "lint-staged": "^7.2.0",
     "lodash": "^4.17.10",
-    "prettier": "^1.12.1",
+    "prettier": "^1.13.5",
+    "prop-types": "^15.6.2",
     "raf": "^3.4.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-test-renderer": "^16.3.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-saga": "^0.2.6",
+    "react-test-renderer": "^16.4.1",
+    "redux": "^4.0.0",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.2",
-    "size-limit": "^0.18.1"
+    "size-limit": "^0.18.2"
   }
 }
