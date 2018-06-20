@@ -4,34 +4,3 @@ extends:
 
 rules:
   react/no-multi-comp: off
-  react/sort-comp:
-    - error
-    -
-      order:
-      - static-methods
-      - lifecycle
-      - everything-else
-      - render
-      groups:
-        lifecycle:
-        - displayName
-        - propTypes
-        - contextTypes
-        - childContextTypes
-        - mixins
-        - statics
-        - defaultProps
-        - constructor
-        - getDefaultProps
-        - getInitialState
-        - state
-        - getChildContext
-        - getSnapshotBeforeUpdate
-        - getDerivedStateFromProps
-        - UNSAFE_componentWillMount
-        - componentDidMount
-        - UNSAFE_componentWillReceiveProps
-        - shouldComponentUpdate
-        - UNSAFE_componentWillUpdate
-        - UNSAFE_componentDidUpdate
-        - componentWillUnmount
