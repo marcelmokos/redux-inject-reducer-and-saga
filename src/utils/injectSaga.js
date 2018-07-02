@@ -22,6 +22,7 @@ export default ({key, saga, mode}) => WrappedComponent => {
       WrappedComponent.name ||
       "Component"})`;
     static contextTypes = {
+      // eslint-disable-next-line react/forbid-prop-types
       store: PropTypes.object.isRequired,
     };
 
