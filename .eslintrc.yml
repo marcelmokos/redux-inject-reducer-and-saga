@@ -4,3 +4,8 @@ extends:
 
 rules:
   react/no-multi-comp: off
+  react/destructuring-assignment: off
+  react/sort-comp: off
+
+  # https://eslint.org/docs/rules/lines-between-class-members
+  lines-between-class-members: off

@@ -4,7 +4,7 @@ import {mount} from "enzyme";
 import {compose, bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {put, takeLatest} from "redux-saga/effects";
-import {configureStore, injectReducer, injectSaga} from "./";
+import {configureStore, injectReducer, injectSaga} from ".";
 
 const {describe, beforeAll, it, expect} = global;
 
