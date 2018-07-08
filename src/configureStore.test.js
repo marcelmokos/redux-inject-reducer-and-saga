@@ -42,6 +42,7 @@ const getWrappedSagaComponent = (prefix, isSetting = true) => {
   }
 
   function* saga() {
+    // $FlowFixMe
     yield takeLatest(NAME_SEND, nameSetSaga);
   }
 
